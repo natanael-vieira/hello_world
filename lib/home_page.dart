@@ -43,18 +43,43 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('HelloWorld!'),
       ),
-      body: Center(
-        child: Text('Clicou $counter'),
+      body: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: 80,
+              height: 80,
+              color: Colors.yellow,
+            ),
+            Container(
+              width: 80,
+              height: 80,
+              color: Colors.green,
+            ),
+            Container(
+              width: 80,
+              height: 80,
+              color: Colors.blue,
+            ),
+          ],
+        ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          setState(() {
-            counter++;
-          });
-          
-        },
-      ),
+      // body: Center(
+      //   child: Text('Clique $counter'),
+      // ),
+      // floatingActionButton: FloatingActionButton(
+      //   child: Icon(Icons.add),
+      //   onPressed: () {
+      //     setState(() {
+      //       counter++;
+      //     });
+
+      //   },
+      // ),
     );
   }
 }
