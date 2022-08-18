@@ -39,41 +39,36 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final names = ['Thais', 'Abigail', 'Sementinha', 'Natanael'];
     return Scaffold(
       appBar: AppBar(
-        title: Text('HelloWorld!'),
+        title: const Text('HelloWorld!'),
       ),
       body: SizedBox(
         width: double.infinity,
         height: double.infinity,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              for (var i = 0; i < 10; i++)
-                Container(
-                  width: double.infinity,
-                  height: 80,
-                  margin: const EdgeInsets.all(12),
-                  color: Colors.blue,
-                ),
-            ],
-          ),
+        child: ListView.builder(
+          itemCount: names.length,
+          itemBuilder: (context, index) {
+            final name = names[index];
+            return ListTile(
+              title: Text(name),
+            );
+          },
         ),
       ),
-      // body: Center(
-      //   child: Text('Clique $counter'),
-      // ),
-      // floatingActionButton: FloatingActionButton(
-      //   child: Icon(Icons.add),
-      //   onPressed: () {
-      //     setState(() {
-      //       counter++;
-      //     });
-
-      //   },
-      // ),
     );
+    // body: Center(
+    //   child: Text('Clique $counter'),
+    // ),
+    // floatingActionButton: FloatingActionButton(
+    //   child: Icon(Icons.add),
+    //   onPressed: () {
+    //     setState(() {
+    //       counter++;
+    //     });
+
+    //   },
+    // ),
   }
 }
