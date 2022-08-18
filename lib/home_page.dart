@@ -1,31 +1,4 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:hello_world/home_controller.dart';
-
-/*class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    var controller = HomeController.of(context);
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('HelloWorld!'),
-      ),
-      body: Center(
-        child: Text('Clicou ${controller.value}'),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          controller.increment();
-        },
-      ),
-    );
-  }
-}
-*/
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -35,40 +8,52 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var counter = 0;
+
+  final controller = TextEditingController();
+  final list = <String>[];
 
   @override
   Widget build(BuildContext context) {
-    final names = ['Thais', 'Abigail', 'Sementinha', 'Natanael'];
     return Scaffold(
       appBar: AppBar(
         title: const Text('HelloWorld!'),
       ),
-      body: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: ListView.builder(
-          itemCount: names.length,
-          itemBuilder: (context, index) {
-            final name = names[index];
-            return ListTile(
-              title: Text(name),
-            );
-          },
-        ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: controller,
+                  ),
+                ),
+                IconButton(
+                    onPressed: () {
+                      final text = controller.text;
+                      list.add(text);
+                      setState(() {
+                     
+                      });
+                      controller.clear();
+                    },
+                    icon: const Icon(Icons.add)),
+              ],
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+                itemCount: list.length,
+                itemBuilder: (context, index) {
+                  final item = list[index];
+                  return ListTile(
+                    title: Text(item),
+                  );
+                }),
+          ),
+        ],
       ),
     );
-    // body: Center(
-    //   child: Text('Clique $counter'),
-    // ),
-    // floatingActionButton: FloatingActionButton(
-    //   child: Icon(Icons.add),
-    //   onPressed: () {
-    //     setState(() {
-    //       counter++;
-    //     });
-
-    //   },
-    // ),
   }
 }
