@@ -28,9 +28,9 @@ class _HomePageState extends State<HomePage> {
                 //Image.network('http://static.vecteezy.com/packs/media/components/global/search-explore-nav/img/vectors/term-bg-1-666de2d941529c25aa511dc18d727160.jpg', fit: BoxFit.cover,),
               ),
               Container(
-                color: Colors.black,
-                height: 100,
-                width: 100,
+                color: Colors.black.withOpacity(0.40),
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
               ),
               Container(
                 color: Colors.white,
